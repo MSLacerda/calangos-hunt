@@ -1,6 +1,80 @@
-.navbar{
-    padding: 1rem;
+#game-container{
+    display: flex;
+    flex-flow: column;
+    flex: 1;
 }
-.btn{
-    outline: none;
+.game-header{
+    display: flex;
+    border-bottom: 2px solid aqua;
+    justify-content: space-evenly;
+}
+#game{
+    flex: 1;
+}
+#target {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    background: radial-gradient(circle, #FCFC14, #FF7700);
+    box-shadow: 0px 0px 50px #FF7700;
+    animation: shadowChange infinite 2s;
+}
+
+#time {
+    color: red;
+}
+
+#score {
+    color: blue;
+}
+
+
+
+@keyframes shadowChange {
+    0% {
+        box-shadow: 0px 0px 50px #FF7700;
+    }
+
+    50% {
+        box-shadow: 0px 0px 90px #FF7700;
+    }
+}
+
+@keyframes loseText {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+}
+
+
+.scores:hover {
+    background-color: #444;
+}
+
+/* GameOver Screen */
+#gameOver,
+#gameOver h1 {
+    position: absolute;
+    color: white;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#gameOver {
+    width: 50%;
+    height: 50%;
+    opacity: 0;
+}
+
+#gameOver h1 {
+    animation: loseText infinite 5s;
 }
