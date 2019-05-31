@@ -18,8 +18,8 @@ setInterval(function () {
 // Counts down timer and checks for lose
 function position(object) {
     // Constantes de tamanho de tela
-    const SCREEN_WIDTH = $('body').width();
-    const SCREEN_HEIGHT = $('body').height();
+    const SCREEN_WIDTH = $('#game').width();
+    const SCREEN_HEIGHT = $('#game').height();
 
     let leftPos = (Math.round((Math.random() * (SCREEN_WIDTH - 100)) / 50) * 50) + 50;
     let topPos = (Math.round((Math.random() * (SCREEN_HEIGHT - 50)) / 50) * 50);
