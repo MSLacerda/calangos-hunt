@@ -1,21 +1,27 @@
-// Timer
-setInterval(function () {
-    if ((parseInt(($('#time').text()) - 1) < 0)) {
-        $('#game-container').animate({
-            opacity: 0.2
-        }, 700);
-        $('#gameOver').animate({
-            opacity: 1
-        }, 1000);
-        $('#gameOver').animate({
-            opacity: 1
-        }, 1000);
-        $('#formScore').val($('#score').text())
-    } else {
-        $('#time').text(parseInt($('#time').text()) - 1)
-    }
-}, 1000);
-// Counts down timer and checks for lose
+// Global Vars
+const DEFAULT_TIME = 25;
+const DEFAULT_SCORE = 0;
+var time = 25; // Segundos
+var score = 0;
+
+var target;
+var timer ;
+
+function showGamePage(){
+    $('#game-container').css("display", "flex");
+    $('#gameOver').css("display", "none");
+    $('#score').text(DEFAULT_SCORE);
+    $('#time').text(DEFAULT_TIME);
+}
+
+function showGameOverPage(){
+    clearInterval(timer);
+    $('#game-container').css("display", "none");
+    $('#gameOver').css("display", "flex");
+    $('#final-score').text("Pontuação Final: " + score);
+}
+
+
 function position(object) {
     // Constantes de tamanho de tela
     const SCREEN_WIDTH = $('#game').width();
@@ -23,20 +29,44 @@ function position(object) {
 
     let leftPos = (Math.round((Math.random() * (SCREEN_WIDTH - 100)) / 50) * 50) + 50;
     let topPos = (Math.round((Math.random() * (SCREEN_HEIGHT - 50)) / 50) * 50);
-
-    while (topPos < 0) {
-        break;
-    }
     $(object).animate({
         left: leftPos,
         top: topPos
     }, 100)
 }
-//Declares function which sets random position of given object.  
-position(document.getElementById('target'));
+
 $('#target').click(function () {
-    if (!(parseInt(($('#time').text()) - 1) < 0)) {
+    if (!time - 1 < 0) {
         position($('#target'));
-        $('#score').text(parseInt($('#score').text()) + 1)
+        score++;
+        $('#score').text(score);
+
+        var audio = document.getElementById("audio");
+        audio.play();
     }
-})
+});
+
+$('#restart').click(function () {
+    showGamePage();
+    StartGame();
+});
+
+function StartGame() {
+    time = DEFAULT_TIME;
+    score = DEFAULT_SCORE;
+
+    target = document.getElementById('target');
+    position(target);
+    $(target).show();
+
+    timer = setInterval(function () {
+        time--;
+        if ((time - 1) < 0) {
+            showGameOverPage();
+        } else {
+            $('#time').text(time);
+        }
+    }, 1000);
+}
+
+StartGame();
