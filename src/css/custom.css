@@ -53,10 +53,10 @@
 }
 
 #time {
-    color: red;
+    color: rgb(255, 95, 95);
 }
 #score {
-    color: blue;
+    color: rgb(104, 225, 255);
 }
 
 .game-label{
