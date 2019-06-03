@@ -24,8 +24,9 @@
     flex: 1;
 }
 .game-header{
+    background-color: rgba(14, 14, 14, 0.705);
     display: flex;
-    border-bottom: 5px solid aqua;
+    /*border-bottom: 5px solid aqua;*/
     justify-content: space-evenly;
 }
 #game{
