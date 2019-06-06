@@ -6,9 +6,7 @@ var score = 0;
 
 var target;
 var timer ;
-function hideMenu(){
 
-}
 function showGamePage(){
     
     $('#game-menu').css("display", "none");
