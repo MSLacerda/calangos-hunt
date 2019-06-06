@@ -1,1 +1,1 @@
-# js-fastclicking
+# Calango's Hunt
