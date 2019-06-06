@@ -97,5 +97,6 @@
     background: black;
     color: white;
     padding: 0.75rem 4rem;
+    border-radius: 20px;
     cursor: pointer;
 }
