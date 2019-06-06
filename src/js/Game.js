@@ -6,8 +6,12 @@ var score = 0;
 
 var target;
 var timer ;
+function hideMenu(){
 
+}
 function showGamePage(){
+    
+    $('#game-menu').css("display", "none");
     $('#game-container').css("display", "flex");
     $('#gameOver').css("display", "none");
     $('#score').text(DEFAULT_SCORE);
@@ -40,9 +44,6 @@ $('#target').click(function () {
         position($('#target'));
         score++;
         $('#score').text(score);
-
-        var audio = document.getElementById("audio");
-        audio.play();
     }
 });
 
@@ -50,8 +51,12 @@ $('#restart').click(function () {
     showGamePage();
     StartGame();
 });
-
+$('#start').click(function () {
+    showGamePage();
+    StartGame();
+});
 function StartGame() {
+    
     time = DEFAULT_TIME;
     score = DEFAULT_SCORE;
 
@@ -61,12 +66,10 @@ function StartGame() {
 
     timer = setInterval(function () {
         time--;
-        if ((time - 1) < 0) {
+        if (time < 0) {
             showGameOverPage();
         } else {
             $('#time').text(time);
         }
     }, 1000);
 }
-
-StartGame();
